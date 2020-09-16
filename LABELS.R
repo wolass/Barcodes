@@ -1,0 +1,123 @@
+library(baRcodeR)
+labels <-uniqID_hier_maker(user = F,
+                           digits = 3
+                           hierarchy = list(a = c("P",1,1),
+                                           b = c("V", 1,1),
+                                           c = c("S",1,12)))
+create_PDF(Labels = labels,
+           name="LABELS",
+           ErrCorr = "L",
+           Fsz = 8)
+
+label_csv <- read.csv( 'Labels_2020-01-16.csv',
+                       header = TRUE,
+                       stringsAsFactors = FALSE)
+
+generate_labels_per_visit <- function(patient,
+                            visit_nr){
+  p <- stringr::str_pad(patient,width = 3,pad = "0", side = "left")
+  #v <- as.character(visit_nr) # levels 10, 11, 12, 20, 30, 40, 41, 42
+  static <- paste0(p,"-",visit_nr,"-")
+  if(visit_nr==1){
+    samples <- c(rep("01",2),  # EDTA
+                 rep("02",20), # serum
+                 rep("03",15), # heparin
+                 rep("04",2),  # dust bed
+                 rep("05",2),  # dust livingroom
+                 rep("06",2),  # stool
+                 rep("07",2),  # stool dog
+                 rep("08",7),  # saliva swab
+                 rep("09",2),  # saliva microbiome
+                 rep("10",3),  # microbiome skin location 1
+                 rep("11",3),  # microbiome skin location 2
+                 rep("12",20), # serum after reaction started
+                 rep("13",10)  # heparin 7 days post reaction
+                 )
+  } else if(visit_nr %in% c(2,3)){
+    samples <- c(#rep("01",2),  # EDTA
+                 rep("02",20), # serum
+                 #rep("03",15), # heparin
+                 rep("04",2),  # dust bed
+                 rep("05",2),  # dust livingroom
+                 rep("06",2),  # stool
+                 rep("07",2),  # stool dog
+                 rep("08",7),  # saliva swab
+                 rep("09",2),  # saliva microbiome
+                 rep("10",2),  # microbiome skin location 1
+                 rep("11",2)  # microbiome skin location 2
+                 #rep("12",20), # serum after reaction started
+                 #rep("13",15)  # heparin 7 days post reaction
+    )
+  } else if(visit_nr ==4){
+    samples <- c(
+      rep("01",2),  # EDTA
+      rep("02",20), # serum
+      rep("03",15), # heparin
+      rep("04",2),  # dust bed
+      rep("05",2),  # dust livingroom
+      rep("06",2),  # stool
+      rep("07",2),  # stool dog
+      rep("08",7),  # saliva swab
+      rep("09",2),  # saliva microbiome
+      rep("10",2),  # microbiome skin location 1
+      rep("11",2),  # microbiome skin location 2
+      rep("12",15), # serum after reaction started
+      rep("13",10),  # heparin 7 days post reaction
+      rep("14",9)  # heparin post reaction
+    )
+  }
+  o <- paste0(static,samples)
+  return(data.frame(label = o))
+}
+
+labelsv1 <- generate_labels_per_visit(patient= 1,visit_nr = 1)
+labels_pat1 <-
+  rbind(generate_labels_per_visit(patient= 1,visit_nr = 1),
+    generate_labels_per_visit(patient= 1,visit_nr = 2),
+    generate_labels_per_visit(patient= 1,visit_nr = 3),
+    generate_labels_per_visit(patient= 1,visit_nr = 4))
+custom_create_PDF(user=FALSE,
+                  Labels = labels_pat1[,],
+                  name = 'LabelsOut',
+                  type = 'matrix',
+                  ErrCorr = 'M',
+                  Fsz = 4,
+                  Across = T,
+                  ERows = 0,
+                  ECols = 0,
+                  trunc = F,
+                  numrow = 27,
+                  numcol = 10,
+                  page_width = 8.27,
+                  page_height = 11.69,
+                  width_margin = 0.25,
+                  height_margin = 0.5,
+                  label_width = NA,
+                  label_height = NA,
+                  x_space = 0,
+                  y_space = 0.5)
+
+
+
+custom_create_PDF(user=FALSE,
+                  Labels = labels_pat1[,],
+                  name = 'LabelsOut',
+                  type = 'matrix',
+                  ErrCorr = 'M',
+                  Fsz = 4,
+                  Across = T,
+                  ERows = 0,
+                  ECols = 0,
+                  trunc = F,
+                  numrow = 30,
+                  numcol = 10,
+                  page_width = 8.27,
+                  page_height = 11.69,
+                  width_margin = 0.35,
+                  height_margin = 0.48,
+                  label_width = NA,
+                  label_height = NA,
+                  x_space = 0,
+                  y_space = 0.5)
+
+

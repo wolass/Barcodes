@@ -1,0 +1,13 @@
+{
+    "path": "~/Documents/KFO/Barcodes/Barcoding",
+    "sortOrder": [
+        {
+            "columnIndex": 4,
+            "ascending": false
+        },
+        {
+            "columnIndex": 2,
+            "ascending": true
+        }
+    ]
+}
