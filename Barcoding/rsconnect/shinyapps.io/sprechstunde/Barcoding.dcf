@@ -5,8 +5,8 @@ account: sprechstunde
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1699789
-bundleId: 3634925
+bundleId: 4129934
 url: https://kfo2020.shinyapps.io/Barcoding/
-when: 1600255154.52731
+when: 1611326731.04483
 asMultiple: FALSE
 asStatic: FALSE
