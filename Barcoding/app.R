@@ -132,13 +132,14 @@ server <- function(input, output) {
                               numrow = 27,
                               numcol = 7,
                               page_width = 8.27,
-                              page_height = 11.69,
+                              page_height = 11.625,
                               width_margin = 0.33,
                               height_margin = 0.5314,
                               label_width = 1,
                               label_height = 0.385,
                               x_space = 0,
-                              y_space = 0.5)
+                              y_space = 0.5,
+                              npc_y = 0.32) # This sets the position of the sublabel under qr code
       cat(list.files())
       file.copy("LabelsOut.pdf",file)
     }

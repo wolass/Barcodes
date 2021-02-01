@@ -2,7 +2,8 @@ custom_create_PDF_sub <- function (user = FALSE, Labels = NULL, name = "LabelsOu
           ErrCorr = "H", Fsz = 12, Across = TRUE, ERows = 0, ECols = 0, 
           trunc = TRUE, numrow = 20, numcol = 4, page_width = 8.5, 
           page_height = 11, width_margin = 0.25, height_margin = 0.5, 
-          label_width = NA, label_height = NA, x_space = 0, y_space = 0.5) 
+          label_width = NA, label_height = NA, x_space = 0, y_space = 0.5,
+          npc_y = 0.25) 
 {
   if (length(Labels) == 0) 
     stop("Labels do not exist. Please pass in Labels")
@@ -131,7 +132,7 @@ custom_create_PDF_sub <- function (user = FALSE, Labels = NULL, name = "LabelsOu
                                height = grid::unit(0.8,"npc"), 
                                just = c("left", "center"))
     sub_vp <- grid::viewport(x = grid::unit(0.05,"npc"), 
-                               y = grid::unit(0.25, "npc"), 
+                               y = grid::unit(npc_y, "npc"), 
                                width = grid::unit(0.3 *label_width, "in"), 
                                height = grid::unit(0.15 *label_width, "in"),
                                just = c("left", "top"))

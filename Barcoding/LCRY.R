@@ -22,7 +22,7 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("13",40),
                  rep("17",5),
                  rep("18",5),
-                 ep("21",2))
+                 rep("21",2))
   } else  if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),
@@ -74,7 +74,7 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("10",2),
                  rep("11",2),
                  rep("12",2),
-                 rep("13",2),
+                 rep("13",40),
                  rep("17",5),
                  rep("18",5))
   } else if(visit_nr==4&proj=="Child"){
