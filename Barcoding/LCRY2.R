@@ -1,4 +1,4 @@
-generate_labels_per_visit_LCRY <- function(proj, 
+generate_labels_per_visit_LCRY2 <- function(proj, 
                                            patient,
                                            visit_nr,
                                            visit_type,
@@ -10,19 +10,12 @@ generate_labels_per_visit_LCRY <- function(proj,
   ##### V1 ####
   if(visit_type == "scheduled"){
     if(visit_nr==1&proj=="Adult"){
-    samples <- c(rep("02",40),
-                 rep("04",2),
-                 rep("05",2),
-                 rep("06",2),
-                 rep("07",2),
-                 rep("08",6),
-                 rep("10",2),
-                 rep("11",2),
-                 rep("12",2),
-                 rep("13",40),
-                 rep("17",5),
-                 rep("18",5),
-                 rep("21",2))
+    samples <- c(rep("23",30),
+                 rep("24",30),
+                 rep("28",30),
+                 rep("29",30),
+                 rep("30",30),
+                 rep("31",30))
   } else  if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),
@@ -56,15 +49,11 @@ generate_labels_per_visit_LCRY <- function(proj,
     samples <- c(rep("02",30),
                  rep("04",2),
                  rep("06",2),
-                 rep("07",2),
-                 rep("08",6),
-                 rep("21",2))
+                 rep("08",6))
   } else if(visit_nr%in%c(2,3)&proj=="Child"){
     samples <- c(rep("04",2),
                  rep("06",2),
-                 rep("07",2),
-                 rep("08",5),
-                 rep("21",2))
+                 rep("08",5))
   } else if(visit_nr%in%c(2,3,4)&proj=="Infant"){
     samples <- c(rep("04",2),
                  rep("06",2),
@@ -76,16 +65,12 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("22",2))
     ###### V4 ####
   } else if(visit_nr==4&proj=="Adult"){
-    samples <- c(rep("02",40),
-                 rep("04",2),
-                 rep("06",2),
-                 rep("08",6),
-                 rep("10",2),
-                 rep("11",2),
-                 rep("12",2),
-                 rep("13",40),
-                 rep("17",5),
-                 rep("18",5))
+    samples <- c(rep("23",30),
+                 rep("24",30),
+                 rep("28",30),
+                 rep("29",30),
+                 rep("30",30),
+                 rep("31",30))
   } else if(visit_nr==4&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),

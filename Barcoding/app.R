@@ -26,6 +26,9 @@ source(file = "custom_qrcode_make2.R")
 source(file = "herma.R")
 source(file = "LCRY.R")
 source(file = "brady.R")
+source(file = "herma2.R")# Time course extra
+source(file = "LCRY2.R")# Time course extra
+
 
 
 #### ui #### 
@@ -54,7 +57,7 @@ ui <- dashboardPage(
           ),
       box(radioButtons("visit_type", label = "Type of visit",choices = c("scheduled","unscheduled")),
              #width = 3,
-          selectizeInput("v_n", label = "Visit number",choices = c("1","2","3","4","5")),
+          selectizeInput("v_n", label = "Visit number",choices = c("1","2","3","4","5","6runApp('Barcoding')")),
           dateInput("visit_date", label = "Visit date", value = Sys.Date())
       )
     )
@@ -69,7 +72,10 @@ ui <- dashboardPage(
         p("NOTE: Please use CHROME BROWSER to print the labels and set the paper type to A4 and scaling to 100%. Unfortunately Windows printer setings have different margin widths and do not allow to print the file in the same format. By using chrome in all of our prints we are able to make it a bit more uniform. Recommended Printer is the KYOCERA ECOSYS P2040dn"),
         downloadButton("downloadLabels", "Herma"),
         downloadButton("downloadLCRY","LCRY-2380"),
-        downloadButton("downloadExcel", label = "Brady printer file")
+        downloadButton("downloadExcel", label = "Brady printer file"),
+        p("EXTRA LABELS: These print files are for Time course labels"),
+        downloadButton("downloadLabels2", "Herma"),
+        downloadButton("downloadLCRY2","LCRY-2380")
         )
       ),
     fluidRow(
@@ -95,7 +101,17 @@ ui <- dashboardPage(
         p("17 - Plasma_03"), #x 5
         p("18 - Plasma_14"),
         p("20 - Serum from mothers"),
-        p("21 - skin of the patient's dog")#x5
+        p("21 - skin of the patient's dog"),#x5
+        p("22 - fresh stool patient"),
+       p("23 - serum after 30’ of allergen contact"),
+       p("24 - serum after 90’ of allergen contact"),
+       p("25 - heparin 14±1 days post reaction"),      
+       p("26 - heparin 21±1 days post reaction"),
+       p("27 - heparin 28±1 days post reaction"),       
+       p("28 - serum 7d post reaction"),
+       p("29 - serum 14d post reaction"),
+       p("30 - serum 21d post reaction"),
+       p("31 - serum 28d post reaction")
       )
     )
   )
@@ -209,6 +225,83 @@ server <- function(input, output) {
     }
   )
   
+  ############## Time course labels ##############
+  ##### Download Herma #####  
+  output$downloadLabels2 <- downloadHandler(
+    filename = function(){
+      paste0("Herma-labels-",input$patient_n,".pdf")
+    },
+    content = function(file){
+      labels_pat1 <- generate_labels_per_visit_herma2(
+        proj = input$project,
+        patient = input$patient_n,
+        visit_nr = input$v_n,
+        visit_type = input$visit_type,
+        date = format(input$visit_date,format="%d.%m.%y"))
+      #### Herma paper definition ####
+      custom_create_PDF_sub(user=FALSE,
+                            Labels = labels_pat1[,],
+                            name = 'LabelsOut',
+                            type = 'matrix',
+                            ErrCorr = 'M',
+                            Fsz = 4,
+                            Across = T,
+                            ERows = input$startLineHERMA-1,
+                            ECols = 0,
+                            trunc = F,
+                            numrow = 27,
+                            numcol = 7,
+                            page_width = 8.27,
+                            page_height = 11.625,
+                            width_margin = 0.33,
+                            height_margin = 0.5314,
+                            label_width = 1,
+                            label_height = 0.385,
+                            x_space = 0,
+                            y_space = 0.5,
+                            npc_y = 0.32) # This sets the position of the sublabel under qr code
+      cat(list.files())
+      file.copy("LabelsOut.pdf",file)
+    }
+  )
+  ### DownloadLCRY####
+  output$downloadLCRY2 <- downloadHandler(
+    filename = function(){
+      paste0("LCRY-labels-",input$patient_n,".pdf")
+    },
+    content = function(file){
+      gls <- generate_labels_per_visit_LCRY2(
+        proj = input$project,
+        patient = input$patient_n,
+        visit_nr = input$v_n,
+        visit_type = input$visit_type,
+        date = format(input$visit_date,format="%d.%m.%y"))
+      #####LCRY Paper Definition ####
+      custom_create_PDF_sub2(user=FALSE,
+                             Labels = gls$label,
+                             name = 'LabelsOut',
+                             type = 'matrix',
+                             ErrCorr = 'M',
+                             Fsz = 4,
+                             Across = T,
+                             ERows = input$startLineLCRY-1,
+                             ECols = 0,
+                             trunc = F,
+                             numrow = 17,
+                             numcol = 7,
+                             page_width = 8.5,
+                             page_height = 10.9,
+                             width_margin = 0.6,
+                             height_margin = 0.28,
+                             label_width = 0.8,
+                             label_height = 0.4,
+                             x_space = 0,
+                             y_space = 0.5)
+      
+      cat(list.files())
+      file.copy("LabelsOut.pdf",file)
+    }
+  )
   
     
 }

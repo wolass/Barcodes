@@ -1,4 +1,4 @@
-generate_labels_per_visit_herma <- function(proj, 
+generate_labels_per_visit_herma2 <- function(proj, 
                                             patient,
                                             visit_nr,
                                             visit_type,
@@ -10,8 +10,9 @@ generate_labels_per_visit_herma <- function(proj,
   #### V1 ####
   if(visit_type == "scheduled"){
     if(visit_nr==1&proj=="Adult"){
-    samples <- c(rep("03",5),
-                 rep("14", 5))
+    samples <- c(rep("25",5),
+                 rep("26",5),
+                 rep("27",5))
   } else  if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",4),
                  rep("03",4),
@@ -58,9 +59,9 @@ generate_labels_per_visit_herma <- function(proj,
                  rep("22",1))
     ##### V4 ####
   } else if(visit_nr==4&proj=="Adult"){
-    samples <- c(rep("03",5),
-                 rep("14",5),
-                 rep("19",5))
+    samples <- c(rep("25",5),
+                 rep("26",5),
+                 rep("27",5))
   } else if(visit_nr==4&proj=="Child"){
     samples <- c(rep("02",3),
                  rep("03",4),
