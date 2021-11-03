@@ -12,10 +12,10 @@ generate_labels_per_visit_LCRY2 <- function(proj,
     if(visit_nr==1&proj=="Adult"){
     samples <- c(rep("23",30),
                  rep("24",30),
-                 rep("28",30),
-                 rep("29",30),
-                 rep("30",30),
-                 rep("31",30))
+                 rep("28",8),
+                 rep("29",8),
+                 rep("30",8),
+                 rep("31",8))
   } else  if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),
@@ -67,10 +67,10 @@ generate_labels_per_visit_LCRY2 <- function(proj,
   } else if(visit_nr==4&proj=="Adult"){
     samples <- c(rep("23",30),
                  rep("24",30),
-                 rep("28",30),
-                 rep("29",30),
-                 rep("30",30),
-                 rep("31",30))
+                 rep("28",8),
+                 rep("29",8),
+                 rep("30",8),
+                 rep("31",8))
   } else if(visit_nr==4&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),
