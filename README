@@ -1,0 +1,24 @@
+# Barcoding app for the KFO FOOD@
+
+## Repository description
+
+This repository contains the code for a shiny app that facilitates the printing of barcodes for small sample tubes (aka epis).
+
+This code is project specific and contains functions for each type of paper.
+
+There are two types of paper used for printing : a cheap paper that stick badly in -80 deg C, and a more pricy vinyl paper stickers that are meant for -80 storage.mode
+
+All of the stickers are to be printed on a laser printer. 
+
+The format of the paper is prepared for the specific sheets used in our project. These can be adjusted if needed. 
+
+We are using the `baRcodeR` package wit custom modifications to allow us to prin the names of the samples underneath the barcode. 
+
+This way it is easier to see the numbers on top of the tubes.
+
+What also works perfectly is writing the sample number (just patients id is enough) on the top lid of the epi and sticking the sticker on the side. 
+That way they are easily idientified in the box and can be properly identified by the label when taken out. It makes the samples seeking process al lot more quick. And does not require one to cut the labels in half. 
+
+## Licence
+
+This code is shared using CC-BY 4.0 License and you may modify and use it as you like, but please recognize the authorship. 
