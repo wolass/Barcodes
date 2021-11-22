@@ -58,7 +58,7 @@ ui <- dashboardPage(
           ),
       box(radioButtons("visit_type", label = "Type of visit",choices = c("scheduled","unscheduled")),
              #width = 3,
-          selectizeInput("v_n", label = "Visit number",choices = c("1","2","3","4","5","6runApp('Barcoding')")),
+          selectizeInput("v_n", label = "Visit number",choices = c("1","2","3","4","5","6")),
           dateInput("visit_date", label = "Visit date", value = Sys.Date())
       )
     )
