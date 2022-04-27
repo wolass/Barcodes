@@ -15,7 +15,7 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("05",2),
                  rep("06",2),
                  rep("07",2),
-                 rep("08",6),
+                 rep("08",10),
                  rep("10",2),
                  rep("11",2),
                  rep("12",2),
@@ -23,7 +23,7 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("17",5),
                  rep("18",5),
                  rep("21",2))
-  } else  if(visit_nr==1&proj=="Child"){
+  } else if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),
                  rep("05",2),
@@ -51,8 +51,20 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("20",15),
                  rep("21",2),
                  rep("22",2))
+  } else if(visit_nr==1&proj=="Healthy"){
+    samples <- c(rep("01",4),
+                 rep("02",60),
+                 rep("03",9),
+                 rep("06",2),
+                 rep("32",2),
+                 rep("07",2),
+                 rep("21",2),
+                 rep("08",10),
+                 rep("10",2),
+                 rep("11",2),
+                 rep("17",5))
     ##### V 2 / 3 ######
-  } else if(visit_nr%in%c(2,3)&proj=="Adult"){
+  }else if(visit_nr%in%c(2,3)&proj=="Adult"){
     samples <- c(rep("02",30),
                  rep("04",2),
                  rep("06",2),

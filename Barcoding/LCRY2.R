@@ -10,12 +10,15 @@ generate_labels_per_visit_LCRY2 <- function(proj,
   ##### V1 ####
   if(visit_type == "scheduled"){
     if(visit_nr==1&proj=="Adult"){
-    samples <- c(rep("23",30),
-                 rep("24",30),
+    samples <- c(rep("23",12),
+                 rep("24",12),
                  rep("28",8),
                  rep("29",8),
                  rep("30",8),
-                 rep("31",8))
+                 rep("31",8),
+                 rep("33",9),
+                 rep("34",9),
+                 rep("35",9))
   } else  if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",20),
                  rep("04",2),

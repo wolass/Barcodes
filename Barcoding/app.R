@@ -29,6 +29,7 @@ source(file = "brady.R")
 source(file = "herma2.R")# Time course extra
 source(file = "LCRY2.R")# Time course extra
 source(file = "LCRY3.R")# Time course extra2!
+source(file = "LCRY_saliva.R")# saliva only
 
 
 
@@ -51,7 +52,7 @@ ui <- dashboardPage(
     fluidRow(
       box(
       h1("Patient and Visit details"),
-      box(selectizeInput("project", label = "Patient age group",choices = c("Infant","Child","Adult")),
+      box(selectizeInput("project", label = "Patient age group",choices = c("Infant","Child","Adult","Healthy")),
              textInput("patient_n", label = "Patient number",value = "1"),
           #selectizeInput("paper", label = "Paper type",choices = c("LCRY-2380","HERMA")),
              #width = 3
@@ -77,7 +78,9 @@ ui <- dashboardPage(
         p("EXTRA LABELS: These print files are for Time course labels"),
         downloadButton("downloadLabels2", "Herma"),
         downloadButton("downloadLCRY2","LCRY-2380"),
-        downloadButton("downloadLCRY3","LCRY-2380-Follow up")
+        downloadButton("downloadLCRY3","LCRY-2380-Follow up"),
+        p("Additional labels for the saliva samples only, retrospective visits"),
+        downloadButton("downloadLCRY_saliva","LCRY-2380 Saliva only")
         )
       ),
     fluidRow(
@@ -113,7 +116,11 @@ ui <- dashboardPage(
        p("28 - serum 7d post reaction"),
        p("29 - serum 14d post reaction"),
        p("30 - serum 21d post reaction"),
-       p("31 - serum 28d post reaction")
+       p("31 - serum 28d post reaction"),
+       p("32 - stool OMNImet from the patient"),
+       p("33 - saliva after 30’ of allergen contact"),
+       p("34 - saliva after 90’ of allergen contact"),
+       p("35 - saliva post reaction")
       )
     )
   )
@@ -342,6 +349,44 @@ server <- function(input, output) {
         file.copy("LabelsOut.pdf",file)
       }
   )
+  ########## DownloadLCRY only saliva####
+    output$downloadLCRY_saliva <- downloadHandler(
+      filename = function(){
+        paste0("LCRY-saliva-",input$patient_n,".pdf")
+      },
+      content = function(file){
+        gls <- generate_labels_per_visit_LCRY_saliva(
+          proj = input$project,
+          patient = input$patient_n,
+          visit_nr = input$v_n,
+          visit_type = input$visit_type,
+          date = format(input$visit_date,format="%d.%m.%y"))
+        #####LCRY Paper Definition ####
+        custom_create_PDF_sub2(user=FALSE,
+                               Labels = gls$label,
+                               name = 'LabelsOut',
+                               type = 'matrix',
+                               ErrCorr = 'M',
+                               Fsz = 4,
+                               Across = T,
+                               ERows = input$startLineLCRY-1,
+                               ECols = 0,
+                               trunc = F,
+                               numrow = 17,
+                               numcol = 7,
+                               page_width = 8.5,
+                               page_height = 10.9,
+                               width_margin = 0.6,
+                               height_margin = 0.28,
+                               label_width = 0.8,
+                               label_height = 0.4,
+                               x_space = 0,
+                               y_space = 0.5)
+        
+        cat(list.files())
+        file.copy("LabelsOut.pdf",file)
+      }
+    )
 }
 
 shinyApp(ui, server)

@@ -15,6 +15,8 @@ generate_labels_per_visit_brady <- function(proj,
     samples <- c(rep("15",3))
   } else if(visit_nr==1&proj=="Infant"){
     samples <- c(rep("15",3))
+  } else if(visit_nr==1&proj=="Healthy"){
+    samples <- c(rep("15",6))
     ########V 2 / 3 ######
   } else if(visit_nr%in%c(2,3)&proj=="Adult"){
     samples <- c(rep("bla",1))

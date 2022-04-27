@@ -10,7 +10,7 @@ generate_labels_per_visit_herma <- function(proj,
   #### V1 ####
   if(visit_type == "scheduled"){
     if(visit_nr==1&proj=="Adult"){
-    samples <- c(rep("03",5),
+    samples <- c(rep("03",9),
                  rep("14", 5))
   } else  if(visit_nr==1&proj=="Child"){
     samples <- c(rep("02",4),

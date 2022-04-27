@@ -5,9 +5,9 @@ account: kfo2020
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1699789
-bundleId: 5278797
+bundleId: 5838942
 url: https://kfo2020.shinyapps.io/Barcoding/
-when: 1637566340.87633
-lastSyncTime: 1637566340.87634
+when: 1650988735.75967
+lastSyncTime: 1650988735.75968
 asMultiple: FALSE
 asStatic: FALSE
