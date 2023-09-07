@@ -70,12 +70,8 @@ generate_labels_per_visit_LCRY2 <- function(proj,
                  rep("35",9),
                  rep("13",30))
   } else if(visit_nr==4&proj=="Child"){
-    samples <- c(rep("23",12),
-                 rep("24",12),
-                 rep("33",9),
-                 rep("34",9),
-                 rep("35",9),
-                 rep("13",20))
+    samples <- c(rep("35",4),
+                 rep("13",11))
   } else if(visit_nr==5&proj=="Infant"){
     samples <- c(rep("02",20),
                  rep("04",2),
