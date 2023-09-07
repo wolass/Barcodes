@@ -11,11 +11,12 @@ custom_qrcode_make <- function (Labels, ErrCorr)
                                     nrow =21,ncol=21), interpolate = FALSE)
   } else{
     cat("We are in the wrong place")
-    Xpng <- grid::rasterGrob(abs(qrcode::qrcode_gen(paste0(Xtxt), 
-                                                    ErrorCorrectionLevel = ErrCorr, 
-                                                    dataOutput = TRUE, 
-                                                    plotQRcode = FALSE, 
-                                                    mask = 3) - 1), 
+    Xpng <- grid::rasterGrob(abs(qrcode::qr_code(paste0(Xtxt), 
+                                                    ecl = ErrCorr
+                                                    # dataOutput = TRUE, 
+                                                    # plotQRcode = FALSE, 
+                                                    # mask = 3
+                                                    ) - 1), 
                              interpolate = FALSE)
     
   }

@@ -1,13 +1,11 @@
 name: Barcoding
-title: Barcoding
+title:
 username:
 account: kfo2020
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1699789
-bundleId: 6752799
+bundleId: 5849660
 url: https://kfo2020.shinyapps.io/Barcoding/
-when: 1674161535.20961
-lastSyncTime: 1674161535.20964
-asMultiple: FALSE
-asStatic: FALSE
+when: 1651211382.69564
+lastSyncTime: 1651211382.69566

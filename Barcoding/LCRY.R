@@ -9,7 +9,7 @@ generate_labels_per_visit_LCRY <- function(proj,
   static <- paste0("FOOD@\n",p,".",ifelse(visit_type=="scheduled","V","U"),visit_nr,".")
   ##### V1 ####
   if(visit_type == "scheduled"){
-    if(visit_nr==1&proj=="Adult"){
+    if(visit_nr==1&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("02",40),
                  rep("04",2),
                  rep("05",2),
@@ -19,7 +19,6 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("10",2),
                  rep("11",2),
                  rep("12",2),
-                 rep("13",40),
                  rep("17",5),
                  rep("18",5),
                  rep("21",2))
@@ -33,7 +32,6 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("10",2),
                  rep("11",2),
                  rep("12",2),
-                 rep("13",20),
                  rep("17",4),
                  rep("21",2))
   } else if(visit_nr==1&proj=="Infant"){
@@ -64,12 +62,12 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("11",2),
                  rep("17",5))
     ##### V 2 / 3 ######
-  }else if(visit_nr%in%c(2,3)&proj=="Adult"){
+  }else if(visit_nr%in%c(2,3)&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("02",30),
                  rep("04",2),
                  rep("06",2),
                  rep("07",2),
-                 rep("08",6),
+                 rep("08",10),
                  rep("21",2))
   } else if(visit_nr%in%c(2,3)&proj=="Child"){
     samples <- c(rep("04",2),
@@ -87,15 +85,14 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("12",2),
                  rep("22",2))
     ###### V4 ####
-  } else if(visit_nr==4&proj=="Adult"){
+  } else if(visit_nr==4&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("02",40),
                  rep("04",2),
                  rep("06",2),
-                 rep("08",6),
+                 rep("08",10),
                  rep("10",2),
                  rep("11",2),
                  rep("12",2),
-                 rep("13",40),
                  rep("17",5),
                  rep("18",5))
   } else if(visit_nr==4&proj=="Child"){
@@ -106,7 +103,6 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("10",2),
                  rep("11",2),
                  rep("12",2),
-                 rep("13",20),
                  rep("17",5))
   } else if(visit_nr==5&proj=="Infant"){
     samples <- c(rep("02",20),
@@ -125,7 +121,7 @@ generate_labels_per_visit_LCRY <- function(proj,
     samples <- c(rep("02",20))
   }
   } else {
-    if(proj=="Adult"){
+    if((proj=="Adult"|proj=="Oesterreich")){
       samples <- c(rep("02",40),
                    rep("04",2),
                    rep("05",2),

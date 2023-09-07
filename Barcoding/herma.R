@@ -9,7 +9,7 @@ generate_labels_per_visit_herma <- function(proj,
   static <- paste0("FOOD@\n",p,".",ifelse(visit_type=="scheduled","V","U"),visit_nr,".")
   #### V1 ####
   if(visit_type == "scheduled"){
-    if(visit_nr==1&proj=="Adult"){
+    if(visit_nr==1&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("03",9),
                  rep("14", 5))
   } else  if(visit_nr==1&proj=="Child"){
@@ -23,7 +23,6 @@ generate_labels_per_visit_herma <- function(proj,
                  rep("10",1),
                  rep("11",1),
                  rep("12",1),
-                 rep("13",2),
                  rep("21",1))
   } else if(visit_nr==1&proj=="Infant"){
     samples <- c(rep("02",5),
@@ -41,7 +40,7 @@ generate_labels_per_visit_herma <- function(proj,
                  rep("21",2),
                  rep("22",1))
     ########V 2 / 3 ######
-  } else if(visit_nr%in%c(2,3)&proj=="Adult"){
+  } else if(visit_nr%in%c(2,3)&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("bla",1))
   } else if(visit_nr%in%c(2,3)&proj=="Child"){
     samples <- c(rep("04",1),
@@ -57,9 +56,9 @@ generate_labels_per_visit_herma <- function(proj,
                  rep("12",2),
                  rep("22",1))
     ##### V4 ####
-  } else if(visit_nr==4&proj=="Adult"){
-    samples <- c(rep("03",5),
-                 rep("14",5),
+  } else if(visit_nr==4&(proj=="Adult"|proj=="Oesterreich")){
+    samples <- c(rep("03",9),
+                 rep("14",6),
                  rep("19",5))
   } else if(visit_nr==4&proj=="Child"){
     samples <- c(rep("02",3),
@@ -70,8 +69,7 @@ generate_labels_per_visit_herma <- function(proj,
                  rep("08",3),
                  rep("10",1),
                  rep("11",1),
-                 rep("12",1),
-                 rep("13",2)
+                 rep("12",1)
     )
   } else if(visit_nr==5&proj=="Infant"){
     samples <- c(rep("01",2),

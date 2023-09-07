@@ -44,7 +44,9 @@ ui <- dashboardPage(
           p("This app will help you generate labels for clinical samples within the KFO339 project."),
             p("Note that patients are divided into three age groups corresponding to different clinical projects."),
             p("Please provide the patient's number (e.g. A003, I008, C014), visit number and if the visit is planned or unscheduled."),
-            p ("You may find the paper for printing the labels:"), 
+          p("Please note that the patients from the Austrian study have a designation starting with an O, please choose Oesterreich in patients age group in order to generate labels for this cohort."),
+          hr(),
+          p ("You may find the paper for printing the labels:"), 
           p(a("HERMA",href="https://www.herma.de/buero-zuhause/produkt/haftetiketten-a4-movables-10001/")),
           p(a("LCRY-2380 (Cryo Babies)", href = "https://www.carlroth.com/de/de/etiketten/kryo-etiketten-auf-dem-bogen-weiss/p/x547.1")))
     ),
@@ -52,7 +54,7 @@ ui <- dashboardPage(
     fluidRow(
       box(
       h1("Patient and Visit details"),
-      box(selectizeInput("project", label = "Patient age group",choices = c("Infant","Child","Adult","Healthy")),
+      box(selectizeInput("project", label = "Cohort (former age group)",choices = c("Infant","Child","Adult","Healthy","Oesterreich")),
              textInput("patient_n", label = "Patient number",value = "1"),
           #selectizeInput("paper", label = "Paper type",choices = c("LCRY-2380","HERMA")),
              #width = 3

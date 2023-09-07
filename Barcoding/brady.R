@@ -8,7 +8,7 @@ generate_labels_per_visit_brady <- function(proj,
   #v <- as.character(visit_nr) # levels 10, 11, 12, 20, 30, 40, 41, 42
   static <- paste0("FOOD@\n",p,".",ifelse(visit_type=="scheduled","V","U"),visit_nr,".")
   #### V1 ####
-  if(visit_nr==1&proj=="Adult"){
+  if(visit_nr==1&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("15",6),
                  rep("16",6))
   } else  if(visit_nr==1&proj=="Child"){
@@ -18,14 +18,14 @@ generate_labels_per_visit_brady <- function(proj,
   } else if(visit_nr==1&proj=="Healthy"){
     samples <- c(rep("15",6))
     ########V 2 / 3 ######
-  } else if(visit_nr%in%c(2,3)&proj=="Adult"){
+  } else if(visit_nr%in%c(2,3)&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("bla",1))
   } else if(visit_nr%in%c(2,3)&proj=="Child"){
     samples <- c(rep("bla",1))
   } else if(visit_nr%in%c(2,3)&proj=="Infant"){
     samples <- c(rep("bla",1))
     ##### V4 ####
-  } else if(visit_nr==4&proj=="Adult"){
+  } else if(visit_nr==4&(proj=="Adult"|proj=="Oesterreich")){
     samples <- c(rep("15",6),
                  rep("16",6))
   } else if(visit_nr==4&proj=="Child"){
