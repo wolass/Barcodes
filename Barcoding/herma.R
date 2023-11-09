@@ -89,6 +89,13 @@ generate_labels_per_visit_herma <- function(proj,
     samples <- c(rep("02",5),
                  rep("03",5))
     
+  } else if(proj=="Healthy Children"){
+    samples <- c(rep("06",2),
+                 rep("07",2),
+                 rep("08",3),
+                 rep("10",2),
+                 rep("11",2),
+                 rep("21",2))
   }
   } else {
   ##### Unscheduled ######  
@@ -120,7 +127,7 @@ generate_labels_per_visit_herma <- function(proj,
                    rep("12",2),
                    rep("21",2),
                    rep("22",1))
-    } 
+    }
   }
   o <- paste0(static,samples,"\n",date) 
   o <- gsub(x = o,  pattern=".bla.*",replacement = "- - -")

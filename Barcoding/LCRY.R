@@ -119,7 +119,15 @@ generate_labels_per_visit_LCRY <- function(proj,
     ###### V5 #####
   } else if(visit_nr==6&proj=="Infant"){
     samples <- c(rep("02",20))
+  } else if(proj=="Healthy Children"){
+    samples <- c(rep("06",2),
+                 rep("07",2),
+                 rep("10",2),
+                 rep("11",2),
+                 rep("21",2),
+                 rep("08",5))
   }
+    
   } else {
     if((proj=="Adult"|proj=="Oesterreich")){
       samples <- c(rep("02",40),
@@ -162,7 +170,7 @@ generate_labels_per_visit_LCRY <- function(proj,
                    rep("20",15),
                    rep("22",1))
     }
-    }
+  }
   o <- paste0(static,samples,"\n",date) 
   o <- gsub(x = o,  pattern=".bla.*",replacement = "- - -")
   return(data.frame(label = o))

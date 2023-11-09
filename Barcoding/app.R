@@ -54,7 +54,7 @@ ui <- dashboardPage(
     fluidRow(
       box(
       h1("Patient and Visit details"),
-      box(selectizeInput("project", label = "Cohort (former age group)",choices = c("Infant","Child","Adult","Healthy","Oesterreich")),
+      box(selectizeInput("project", label = "Cohort (former age group)",choices = c("Infant","Child","Adult","Healthy","Oesterreich","Healthy Children")),
              textInput("patient_n", label = "Patient number",value = "1"),
           #selectizeInput("paper", label = "Paper type",choices = c("LCRY-2380","HERMA")),
              #width = 3
