@@ -95,7 +95,9 @@ generate_labels_per_visit_herma <- function(proj,
                  rep("08",3),
                  rep("10",2),
                  rep("11",2),
-                 rep("21",2))
+                 rep("21",2),
+                 rep("09",1) # here added 
+    )
   }
   } else {
   ##### Unscheduled ######  

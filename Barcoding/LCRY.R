@@ -125,7 +125,9 @@ generate_labels_per_visit_LCRY <- function(proj,
                  rep("10",2),
                  rep("11",2),
                  rep("21",2),
-                 rep("08",5))
+                 rep("08",5),
+                 rep("09",1) # here added Saliva for Vali FOOD
+    )
   }
     
   } else {
