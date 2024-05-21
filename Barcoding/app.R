@@ -1,4 +1,3 @@
-#
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
 #
@@ -150,7 +149,7 @@ server <- function(input, output) {
                               Labels = labels_pat1[,],
                               name = 'LabelsOut',
                               type = 'matrix',
-                              ErrCorr = 'M',
+                              ErrCorr = 'L',
                               Fsz = 4,
                               Across = T,
                               ERows = input$startLineHERMA-1,
@@ -214,7 +213,7 @@ server <- function(input, output) {
                                Labels = gls$label,
                                name = 'LabelsOut',
                                type = 'matrix',
-                               ErrCorr = 'M',
+                               ErrCorr = 'L',
                                Fsz = 4,
                                Across = T,
                                ERows = input$startLineLCRY-1,
@@ -254,7 +253,7 @@ server <- function(input, output) {
                             Labels = labels_pat1[,],
                             name = 'LabelsOut',
                             type = 'matrix',
-                            ErrCorr = 'M',
+                            ErrCorr = 'L',
                             Fsz = 4,
                             Across = T,
                             ERows = input$startLineHERMA-1,
@@ -292,7 +291,7 @@ server <- function(input, output) {
                              Labels = gls$label,
                              name = 'LabelsOut',
                              type = 'matrix',
-                             ErrCorr = 'M',
+                             ErrCorr = 'L',
                              Fsz = 4,
                              Across = T,
                              ERows = input$startLineLCRY-1,
@@ -330,7 +329,7 @@ server <- function(input, output) {
                                Labels = gls$label,
                                name = 'LabelsOut',
                                type = 'matrix',
-                               ErrCorr = 'M',
+                               ErrCorr = 'L',
                                Fsz = 4,
                                Across = T,
                                ERows = input$startLineLCRY-1,
@@ -368,7 +367,7 @@ server <- function(input, output) {
                                Labels = gls$label,
                                name = 'LabelsOut',
                                type = 'matrix',
-                               ErrCorr = 'M',
+                               ErrCorr = 'L',
                                Fsz = 4,
                                Across = T,
                                ERows = input$startLineLCRY-1,

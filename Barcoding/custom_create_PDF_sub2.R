@@ -1,5 +1,5 @@
 custom_create_PDF_sub2 <- function (user = FALSE, Labels = NULL, name = "LabelsOut", type = "matrix", 
-                                   ErrCorr = "H", Fsz = 12, Across = TRUE, ERows = 0, ECols = 0, 
+                                   ErrCorr = "L", Fsz = 12, Across = TRUE, ERows = 0, ECols = 0, 
                                    trunc = TRUE, numrow = 20, numcol = 4, page_width = 8.5, 
                                    page_height = 11, width_margin = 0.25, height_margin = 0.5, 
                                    label_width = NA, label_height = NA, x_space = 0, y_space = 0.5) 
