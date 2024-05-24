@@ -149,7 +149,7 @@ server <- function(input, output) {
                               Labels = labels_pat1[,],
                               name = 'LabelsOut',
                               type = 'matrix',
-                              ErrCorr = 'L',
+                              ErrCorr = 'M',
                               Fsz = 4,
                               Across = T,
                               ERows = input$startLineHERMA-1,
